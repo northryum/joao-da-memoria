@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://c60ara6kywel8"]
+
+[ext_resource type="Script" uid="uid://c8yjth7vi7xim" path="res://Scripts/main_menu.gd" id="1_pfblw"]
+
+[node name="MainMenu" type="Control" unique_id=224338098]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pfblw")
+
+[node name="MainPage" type="VBoxContainer" parent="." unique_id=146946922]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -424.0
+offset_top = -98.0
+offset_right = -213.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+metadata/_edit_use_anchors_ = true
+
+[node name="Novo Jogo" type="Button" parent="MainPage" unique_id=1782553293]
+layout_mode = 2
+
+[node name="Multiplayer" type="Button" parent="MainPage" unique_id=1363562211]
+layout_mode = 2
+
+[node name="Opções" type="Button" parent="MainPage" unique_id=330405298]
+layout_mode = 2
+
+[node name="Sair" type="Button" parent="MainPage" unique_id=1384212465]
+layout_mode = 2
+
+[node name="SetupPage" type="VBoxContainer" parent="." unique_id=1632628326]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Iniciar Partida" type="Button" parent="SetupPage" unique_id=51382144]
+layout_mode = 2
+
+[node name="Linhas" type="SpinBox" parent="SetupPage" unique_id=450178868]
+layout_mode = 2
+min_value = 2.0
+max_value = 10.0
+value = 2.0
+
+[node name="Quantidade de Linhas" type="Label" parent="SetupPage/Linhas" unique_id=782598296]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Colunas" type="SpinBox" parent="SetupPage" unique_id=1931573034]
+layout_mode = 2
+min_value = 2.0
+max_value = 10.0
+value = 2.0
+
+[node name="Quantidade de Colunas" type="Label" parent="SetupPage/Colunas" unique_id=1081566226]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Voltar" type="Button" parent="SetupPage" unique_id=1049289728]
+layout_mode = 2
+
+[node name="SetupPage_multiplayer" type="VBoxContainer" parent="." unique_id=1634619307]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="button" type="Button" parent="SetupPage_multiplayer" unique_id=905120936]
+layout_mode = 2
+
+[node name="Linhas" type="SpinBox" parent="SetupPage_multiplayer" unique_id=537606997]
+layout_mode = 2
+min_value = 2.0
+max_value = 10.0
+value = 2.0
+
+[node name="Quantidade de Linhas" type="Label" parent="SetupPage_multiplayer/Linhas" unique_id=1812263918]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Colunas" type="SpinBox" parent="SetupPage_multiplayer" unique_id=1497010360]
+layout_mode = 2
+min_value = 2.0
+max_value = 10.0
+value = 2.0
+
+[node name="Quantidade de Colunas" type="Label" parent="SetupPage_multiplayer/Colunas" unique_id=1245112597]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Voltar" type="Button" parent="SetupPage_multiplayer" unique_id=1447098877]
+layout_mode = 2
+
+[node name="OptionsPage" type="VBoxContainer" parent="." unique_id=2024176281]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Som" type="Button" parent="OptionsPage" unique_id=304972875]
+layout_mode = 2
+
+[node name="Tela" type="Button" parent="OptionsPage" unique_id=932010941]
+layout_mode = 2
+
+[node name="Idioma" type="Button" parent="OptionsPage" unique_id=645846448]
+layout_mode = 2
+
+[node name="Voltar" type="Button" parent="OptionsPage" unique_id=898235781]
+layout_mode = 2
+
+[connection signal="pressed" from="MainPage/Novo Jogo" to="." method="_on_novo_jogo_pressed"]
+[connection signal="pressed" from="MainPage/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainPage/Opções" to="." method="_on_opções_pressed"]
+[connection signal="pressed" from="MainPage/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="SetupPage/Iniciar Partida" to="." method="_on_iniciar_partida_pressed"]
+[connection signal="pressed" from="SetupPage/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="SetupPage_multiplayer/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="OptionsPage/Som" to="." method="_on_som_pressed"]
+[connection signal="pressed" from="OptionsPage/Tela" to="." method="_on_tela_pressed"]
+[connection signal="pressed" from="OptionsPage/Idioma" to="." method="_on_idioma_pressed"]
+[connection signal="pressed" from="OptionsPage/Voltar" to="." method="_on_voltar_pressed"]

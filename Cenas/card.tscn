@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dluqra475fg82"]
+
+[ext_resource type="Texture2D" uid="uid://dtdofkwvfu8nf" path="res://icon.svg" id="1_f5jlf"]
+[ext_resource type="Script" uid="uid://ccxkod0va3881" path="res://Scripts/card.gd" id="2_yxlwg"]
+
+[node name="Card" type="TextureButton" unique_id=1078374528]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 60)
+texture_normal = ExtResource("1_f5jlf")
+stretch_mode = 3
+script = ExtResource("2_yxlwg")
+front_texture = ExtResource("1_f5jlf")
