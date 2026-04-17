@@ -59,9 +59,9 @@ layout_mode = 2
 
 [node name="Linhas" type="SpinBox" parent="SetupPage" unique_id=450178868]
 layout_mode = 2
-min_value = 2.0
+min_value = 4.0
 max_value = 10.0
-value = 2.0
+value = 4.0
 
 [node name="Quantidade de Linhas" type="Label" parent="SetupPage/Linhas" unique_id=782598296]
 layout_mode = 0
@@ -102,9 +102,9 @@ layout_mode = 2
 
 [node name="Linhas" type="SpinBox" parent="SetupPage_multiplayer" unique_id=537606997]
 layout_mode = 2
-min_value = 2.0
+min_value = 4.0
 max_value = 10.0
-value = 2.0
+value = 4.0
 
 [node name="Quantidade de Linhas" type="Label" parent="SetupPage_multiplayer/Linhas" unique_id=1812263918]
 layout_mode = 0

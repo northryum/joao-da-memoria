@@ -8,15 +8,21 @@ extends Control
 # Configurações da Spritesheet (Animais)
 var colunas_na_imagem = 5
 var linhas_na_imagem = 6
+# Variáveis do Juiz
+var carta_1 = null
+var carta_2 = null
+var pode_clicar = true # Evita que o jogador clique numa terceira carta enquanto o juiz avalia
 
 func _ready():
-	grid.columns = GameManager.colunas_atuais
 	var total_cartas = GameManager.linhas_atuais * GameManager.colunas_atuais
 	
-	# Criamos uma lista com todas as imagens recortadas
+	# Se o número for ímpar, removemos uma carta para não travar
+	if total_cartas % 2 != 0:
+		print("Aviso: Tabuleiro ímpar! Removendo uma unidade para manter os pares.")
+		total_cartas -= 1 
+		
+	grid.columns = GameManager.colunas_atuais
 	var todas_as_imagens = extrair_texturas()
-	
-	# Embaralhamos e geramos o tabuleiro (veremos isso a seguir)
 	generate_board(total_cartas, todas_as_imagens)
 
 func extrair_texturas() -> Array:
@@ -29,12 +35,13 @@ func extrair_texturas() -> Array:
 	# Percorremos cada linha e cada coluna para criar o Rect2
 	for y in range(linhas_na_imagem):
 		for x in range(colunas_na_imagem):
+			
 			# Criamos o objeto de recorte
 			var atlas_texture = AtlasTexture.new()
 			atlas_texture.atlas = spritesheet
 			
 			# Definimos a região: Rect2(X, Y, Largura, Altura)
-			atlas_texture.region = Rect2(x * largura_frame+2, y * altura_frame, largura_frame, altura_frame)
+			atlas_texture.region = Rect2(x * largura_frame+1, y * altura_frame, largura_frame, altura_frame)
 			
 			lista_de_recortes.append(atlas_texture)
 			
@@ -59,9 +66,42 @@ func generate_board(total, imagens_recortadas):
 	imagens_da_partida.shuffle()
 	
 	# 3. Criamos as cartas e entregamos as fotos recortadas
+	# Criamos as cartas e entregamos as fotos recortadas
 	for i in range(total):
 		var new_card = card_scene.instantiate()
 		grid.add_child(new_card)
-		
-		# Aqui está a "cola": entregamos a imagem recortada para a variável da carta
 		new_card.front_texture = imagens_da_partida[i]
+		
+		# NOVA LINHA: Conecta o sinal da carta à função do juiz
+		# Troque .flipped por .clicked
+		new_card.clicked.connect(_on_carta_clicada)
+
+func _on_carta_clicada(carta):
+	# O juiz barra o clique instantaneamente se já estiver avaliando duas cartas
+	if not pode_clicar:
+		return
+		
+	# Se passou pela barreira, o juiz manda a carta virar
+	carta.turn_face_up()
+		
+	if carta_1 == null:
+		carta_1 = carta
+	elif carta_2 == null:
+		carta_2 = carta
+		# Trava a mesa no exato milissegundo do segundo clique!
+		pode_clicar = false 
+		checar_par()
+
+func checar_par():
+	await get_tree().create_timer(1.0).timeout
+	
+	if carta_1.front_texture == carta_2.front_texture:
+		carta_1.set_matched()
+		carta_2.set_matched()
+	else:
+		carta_1.turn_face_down() # Usando o novo nome da função
+		carta_2.turn_face_down()
+		
+	carta_1 = null
+	carta_2 = null
+	pode_clicar = true
