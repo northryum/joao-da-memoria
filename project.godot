@@ -18,6 +18,17 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://dabysgmi70lxi"
+GlobalBackground="*uid://6deirhscu2e3"
+
+[display]
+
+window/size/mode=3
+window/frame_pacing/android/enable_frame_pacing=false
+
+[gui]
+
+theme/custom="uid://c7b11hul5bigr"
+theme/custom_font="uid://bjhf34b5fjt5r"
 
 [physics]
 

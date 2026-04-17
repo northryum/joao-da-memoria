@@ -1,6 +1,52 @@
 [gd_scene format=3 uid="uid://c60ara6kywel8"]
 
+[ext_resource type="FontFile" uid="uid://bjhf34b5fjt5r" path="res://assets/Fontes/PixelTheme.ttf" id="1_hn0nd"]
 [ext_resource type="Script" uid="uid://c8yjth7vi7xim" path="res://Scripts/main_menu.gd" id="1_pfblw"]
+[ext_resource type="Theme" uid="uid://c7b11hul5bigr" path="res://assets/Fontes/PixelTheme.tres" id="2_hn0nd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcldy"]
+bg_color = Color(1, 0.32710505, 0.38949794, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ne6k"]
+bg_color = Color(0.47625422, 0.6201479, 0.7327613, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd8gm"]
+bg_color = Color(1, 0.3254902, 0.3882353, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybyo8"]
+bg_color = Color(0.4745098, 0.61960787, 0.73333335, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="Theme" id="Theme_jeejk"]
+default_font = ExtResource("1_hn0nd")
+default_font_size = 40
+Button/styles/hover = SubResource("StyleBoxFlat_lcldy")
+Button/styles/normal = SubResource("StyleBoxFlat_8ne6k")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_bd8gm")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_ybyo8")
 
 [node name="MainMenu" type="Control" unique_id=224338098]
 layout_mode = 3
@@ -9,6 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_jeejk")
 script = ExtResource("1_pfblw")
 
 [node name="MainPage" type="VBoxContainer" parent="." unique_id=146946922]
@@ -18,26 +65,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -424.0
-offset_top = -98.0
-offset_right = -213.5
-offset_bottom = -54.0
+offset_left = -170.0
+offset_top = -46.0
+offset_right = 170.0
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4, 4)
-metadata/_edit_use_anchors_ = true
+alignment = 1
 
 [node name="Novo Jogo" type="Button" parent="MainPage" unique_id=1782553293]
 layout_mode = 2
+text = "Novo Jogo"
 
 [node name="Multiplayer" type="Button" parent="MainPage" unique_id=1363562211]
 layout_mode = 2
+text = "Multiplayer"
 
 [node name="Opções" type="Button" parent="MainPage" unique_id=330405298]
 layout_mode = 2
+text = "Opções"
 
 [node name="Sair" type="Button" parent="MainPage" unique_id=1384212465]
 layout_mode = 2
+text = "sair"
 
 [node name="SetupPage" type="VBoxContainer" parent="." unique_id=1632628326]
 visible = false
@@ -56,6 +106,7 @@ grow_vertical = 2
 
 [node name="Iniciar Partida" type="Button" parent="SetupPage" unique_id=51382144]
 layout_mode = 2
+text = "Iniciar Partida"
 
 [node name="Linhas" type="SpinBox" parent="SetupPage" unique_id=450178868]
 layout_mode = 2
@@ -70,9 +121,9 @@ offset_bottom = 23.0
 
 [node name="Colunas" type="SpinBox" parent="SetupPage" unique_id=1931573034]
 layout_mode = 2
-min_value = 2.0
+min_value = 4.0
 max_value = 10.0
-value = 2.0
+value = 4.0
 
 [node name="Quantidade de Colunas" type="Label" parent="SetupPage/Colunas" unique_id=1081566226]
 layout_mode = 0
@@ -81,6 +132,7 @@ offset_bottom = 23.0
 
 [node name="Voltar" type="Button" parent="SetupPage" unique_id=1049289728]
 layout_mode = 2
+text = "Voltar"
 
 [node name="SetupPage_multiplayer" type="VBoxContainer" parent="." unique_id=1634619307]
 visible = false
@@ -124,6 +176,7 @@ offset_bottom = 23.0
 
 [node name="Voltar" type="Button" parent="SetupPage_multiplayer" unique_id=1447098877]
 layout_mode = 2
+text = "Voltar"
 
 [node name="OptionsPage" type="VBoxContainer" parent="." unique_id=2024176281]
 visible = false
@@ -136,17 +189,56 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SeletorPaleta" type="OptionButton" parent="OptionsPage" unique_id=365990846]
+layout_mode = 2
+
 [node name="Som" type="Button" parent="OptionsPage" unique_id=304972875]
 layout_mode = 2
+text = "Som"
 
 [node name="Tela" type="Button" parent="OptionsPage" unique_id=932010941]
 layout_mode = 2
+text = "Tela"
 
 [node name="Idioma" type="Button" parent="OptionsPage" unique_id=645846448]
 layout_mode = 2
+text = "idioma"
 
 [node name="Voltar" type="Button" parent="OptionsPage" unique_id=898235781]
 layout_mode = 2
+text = "voltar"
+
+[node name="titulo_jogo" type="Label" parent="." unique_id=551919678]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -187.0
+offset_top = 122.0
+offset_right = 3.0
+offset_bottom = 182.00006
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme = ExtResource("2_hn0nd")
+theme_override_colors/font_color = Color(0.45490196, 0.5647059, 1, 1)
+theme_override_constants/outline_size = 15
+text = "jogo da"
+
+[node name="titulo_jogo2" type="Label" parent="." unique_id=2034998490]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -228.0
+offset_top = 263.0
+offset_right = 2.0
+offset_bottom = 323.00006
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme = ExtResource("2_hn0nd")
+theme_override_colors/font_color = Color(0.45490196, 0.5647059, 1, 1)
+theme_override_constants/outline_size = 15
+text = "memoria"
 
 [connection signal="pressed" from="MainPage/Novo Jogo" to="." method="_on_novo_jogo_pressed"]
 [connection signal="pressed" from="MainPage/Multiplayer" to="." method="_on_multiplayer_pressed"]
@@ -155,6 +247,7 @@ layout_mode = 2
 [connection signal="pressed" from="SetupPage/Iniciar Partida" to="." method="_on_iniciar_partida_pressed"]
 [connection signal="pressed" from="SetupPage/Voltar" to="." method="_on_voltar_pressed"]
 [connection signal="pressed" from="SetupPage_multiplayer/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="item_selected" from="OptionsPage/SeletorPaleta" to="." method="_on_seletor_paleta_item_selected"]
 [connection signal="pressed" from="OptionsPage/Som" to="." method="_on_som_pressed"]
 [connection signal="pressed" from="OptionsPage/Tela" to="." method="_on_tela_pressed"]
 [connection signal="pressed" from="OptionsPage/Idioma" to="." method="_on_idioma_pressed"]

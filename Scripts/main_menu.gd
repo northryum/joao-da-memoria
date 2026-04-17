@@ -7,10 +7,15 @@ extends Control
 @onready var setup_page_multiplayer = $SetupPage_multiplayer
 @onready var spin_linhas = $SetupPage/Linhas
 @onready var spin_colunas = $SetupPage/Colunas
+@onready var seletor_paleta = $OptionsPage/SeletorPaleta
 
 func _ready():
 	# Ao iniciar o jogo, garantimos que apenas a página principal apareça
 	show_page(main_page)
+	# Limpa o botão e adiciona os nomes das paletas do nosso Autoload
+	seletor_paleta.clear()
+	for paleta in GlobalBackground.paletas:
+		seletor_paleta.add_item(paleta.nome)
 
 #region main page
 func show_page(page_to_show):
@@ -69,7 +74,9 @@ func _on_voltar_pressed() -> void:
 #endregion 
 
 #region OptionsPage
-
+func _on_seletor_paleta_item_selected(index):
+	# Quando o jogador escolhe um item na lista, mandamos o número para o fundo global
+	GlobalBackground.mudar_paleta(index)
 
 func _on_som_pressed() -> void:
 	pass # Replace with function body.
